@@ -5,7 +5,10 @@ import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 
-export default function Home({ allPostsData }) {
+export default function Home({allPostsData}) {
+  // console.log('typeof allPostsData', typeof allPostsData)
+  // console.log('Array.isArray(allPostsData)', Array.isArray(allPostsData))
+  // console.log('allPostsData', allPostsData)
   return (
     <Layout home>
       <Head>
@@ -15,7 +18,7 @@ export default function Home({ allPostsData }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
+          {/* {allPostsData.map(({ id, date, title }) => (
                <li className={utilStyles.listItem} key={id}>
                <Link href="/posts/[id]" as={`/posts/${id}`}>
                  <a>{title}</a>
@@ -25,7 +28,7 @@ export default function Home({ allPostsData }) {
                  <Date dateString={date} />
                </small>
              </li>
-          ))}
+          ))} */}
         </ul>
       </section>
       
@@ -35,6 +38,7 @@ export default function Home({ allPostsData }) {
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
+  console.log('allPostsData',allPostsData)
   return {
     props: {
       allPostsData
